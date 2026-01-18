@@ -1,0 +1,41 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ //用层序遍历求和，再使用排序算法排序，找到第k大的数字。
+class Solution {
+    public long kthLargestLevelSum(TreeNode root, int k) {
+        List<Long> a = new ArrayList<>();
+        List<TreeNode> q =List.of(root);
+        while(q.size()>0)
+        {
+            long sum = 0;
+            List<TreeNode> temp = new ArrayList<TreeNode>();
+            for(TreeNode node:q)
+            {
+                sum += node.val;
+                if(node.left!=null) temp.add(node.left);
+                if(node.right!=null) temp.add(node.right);
+            }
+            q = temp;
+            a.add(sum);
+        }
+        if(k>a.size())
+        {
+            return -1;
+        }
+        Collections.sort(a);
+        return a.get(a.size()-k);
+    }
+}
