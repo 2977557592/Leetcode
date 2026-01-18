@@ -1,4 +1,5 @@
 //2461. 长度为 K 子数组中的最大和
+//https://leetcode.cn/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/
 class Solution {
     public long maximumSubarraySum(int[] nums, int k) {
         long ans=0;
