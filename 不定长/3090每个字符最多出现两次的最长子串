@@ -1,4 +1,5 @@
 //3090每个字符最多出现两次的最长子串
+//https://leetcode.cn/problems/maximum-length-substring-with-two-occurrences/
 class Solution {
     public int maximumLengthSubstring(String s) {
         //用于计数
