@@ -1,0 +1,28 @@
+//3090每个字符最多出现两次的最长子串
+class Solution {
+    public int maximumLengthSubstring(String s) {
+        //用于计数
+        int[] count = new int[26];
+        //开始位置
+        int begin = 0;
+        int maxLen = 0;
+        //将字符创转换为数组
+        char[] chars = s.toCharArray();
+
+        for (int end = 0; end < chars.length; end++) {
+            char cur = chars[end];
+            int idx = cur - 'a';
+            //对当前字符计数+1
+            count[idx]++;
+            //当前字符超过两个
+            while (count[idx] > 2) {
+                //把第2个字符之前的字符移除掉
+                char leftChar = chars[begin];
+                count[leftChar - 'a']--;
+                begin++;
+            }
+            maxLen = Math.max(maxLen, end - begin + 1);
+        }
+        return maxLen;
+    }
+}
